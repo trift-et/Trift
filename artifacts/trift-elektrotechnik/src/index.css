@@ -1,0 +1,522 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ==========================================
+   TRIFT ELEKTROTECHNIK — COLOR SYSTEM
+   
+   Palette: Deep Anthracite + Solar Amber
+   Base:    Rich charcoal (not black, not gray)
+   Accent:  Warm solar amber / golden yellow
+   Surface: Warm off-white with a whisper of yellow
+   ========================================== */
+
+:root {
+  --button-outline: rgba(0, 0, 0, 0.1);
+  --badge-outline: rgba(0, 0, 0, 0.05);
+  --opaque-button-border-intensity: -8;
+  --elevate-1: rgba(0, 0, 0, 0.03);
+  --elevate-2: rgba(0, 0, 0, 0.08);
+
+  /* Core palette */
+  --background:       44 18% 97%;       /* Warm off-white, slight parchment */
+  --foreground:       218 25% 14%;      /* Deep anthracite — the main text */
+  --border:           44 15% 85%;       /* Warm light border */
+  --input:            44 15% 80%;
+
+  /* Card surfaces */
+  --card:             44 22% 99%;
+  --card-foreground:  218 25% 14%;
+  --card-border:      44 15% 87%;
+
+  /* Sidebar — same warm surface */
+  --sidebar:          44 18% 97%;
+  --sidebar-foreground: 218 25% 14%;
+  --sidebar-border:   44 15% 85%;
+  --sidebar-primary:  38 95% 50%;
+  --sidebar-primary-foreground: 218 30% 10%;
+  --sidebar-accent:   44 20% 93%;
+  --sidebar-accent-foreground: 218 25% 14%;
+  --sidebar-ring:     38 95% 50%;
+
+  /* Popover */
+  --popover:          44 22% 99%;
+  --popover-foreground: 218 25% 14%;
+  --popover-border:   44 15% 85%;
+
+  /* PRIMARY — Solar Amber: the heartbeat of the brand */
+  --primary:          38 95% 50%;       /* Warm solar gold */
+  --primary-foreground: 218 30% 10%;   /* Dark text on amber */
+
+  /* SECONDARY — Anthracite deep */
+  --secondary:        218 25% 18%;
+  --secondary-foreground: 44 25% 96%;
+
+  /* MUTED — Warm mid-gray */
+  --muted:            44 12% 92%;
+  --muted-foreground: 218 12% 42%;
+
+  /* ACCENT — Brighter amber tint */
+  --accent:           42 90% 92%;
+  --accent-foreground: 218 25% 14%;
+
+  /* DESTRUCTIVE */
+  --destructive:      4 74% 52%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Ring */
+  --ring:             38 95% 50%;
+
+  /* Charts */
+  --chart-1:          38 95% 50%;
+  --chart-2:          218 40% 32%;
+  --chart-3:          155 50% 38%;
+  --chart-4:          28 85% 55%;
+  --chart-5:          210 30% 55%;
+
+  /* Brand custom properties */
+  --brand-amber:      38 95% 50%;
+  --brand-amber-dark: 33 90% 40%;
+  --brand-anthracite: 218 25% 14%;
+  --brand-anthracite-mid: 218 22% 22%;
+  --brand-surface:    44 18% 97%;
+
+  /* Fonts */
+  --app-font-sans: 'DM Sans', sans-serif;
+  --app-font-serif: 'Bricolage Grotesque', sans-serif;
+  --app-font-mono: 'Spline Sans Mono', monospace;
+  --radius: 0.375rem;
+
+  /* Shadows with amber warmth */
+  --shadow-2xs: 0px 1px 2px 0px hsl(218 25% 14% / 0.06);
+  --shadow-xs:  0px 2px 4px 0px hsl(218 25% 14% / 0.08);
+  --shadow-sm:  0px 2px 4px 0px hsl(218 25% 14% / 0.06), 0px 1px 2px -1px hsl(218 25% 14% / 0.06);
+  --shadow:     0px 4px 6px 0px hsl(218 25% 14% / 0.07), 0px 2px 4px -1px hsl(218 25% 14% / 0.05);
+  --shadow-md:  0px 6px 12px 0px hsl(218 25% 14% / 0.08), 0px 3px 6px -2px hsl(218 25% 14% / 0.06);
+  --shadow-lg:  0px 12px 24px 0px hsl(218 25% 14% / 0.10), 0px 6px 10px -3px hsl(218 25% 14% / 0.07);
+  --shadow-xl:  0px 20px 40px 0px hsl(218 25% 14% / 0.12), 0px 10px 16px -4px hsl(218 25% 14% / 0.08);
+  --shadow-2xl: 0px 32px 64px 0px hsl(218 25% 14% / 0.16);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+}
+
+.dark {
+  --button-outline: rgba(255, 255, 255, 0.1);
+  --badge-outline: rgba(255, 255, 255, 0.05);
+  --opaque-button-border-intensity: 9;
+  --elevate-1: rgba(255, 255, 255, 0.04);
+  --elevate-2: rgba(255, 255, 255, 0.09);
+
+  --background:       218 28% 10%;
+  --foreground:       44 20% 93%;
+  --border:           218 20% 22%;
+  --input:            218 20% 26%;
+
+  --card:             218 25% 13%;
+  --card-foreground:  44 20% 93%;
+  --card-border:      218 20% 22%;
+
+  --sidebar:          218 28% 10%;
+  --sidebar-foreground: 44 20% 93%;
+  --sidebar-border:   218 20% 22%;
+  --sidebar-primary:  38 95% 50%;
+  --sidebar-primary-foreground: 218 30% 10%;
+  --sidebar-accent:   218 22% 18%;
+  --sidebar-accent-foreground: 44 20% 93%;
+  --sidebar-ring:     38 95% 50%;
+
+  --popover:          218 25% 13%;
+  --popover-foreground: 44 20% 93%;
+  --popover-border:   218 20% 22%;
+
+  --primary:          38 95% 50%;
+  --primary-foreground: 218 30% 10%;
+
+  --secondary:        218 20% 22%;
+  --secondary-foreground: 44 20% 93%;
+
+  --muted:            218 22% 18%;
+  --muted-foreground: 218 12% 56%;
+
+  --accent:           218 22% 22%;
+  --accent-foreground: 44 20% 93%;
+
+  --destructive:      4 68% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  --ring:             38 95% 50%;
+
+  --chart-1: 38 95% 50%;
+  --chart-2: 218 40% 55%;
+  --chart-3: 155 50% 48%;
+  --chart-4: 28 85% 60%;
+  --chart-5: 210 30% 65%;
+
+  --shadow-2xs: 0px 1px 2px 0px hsl(218 25% 4% / 0.3);
+  --shadow-xs:  0px 2px 4px 0px hsl(218 25% 4% / 0.35);
+  --shadow-sm:  0px 2px 4px 0px hsl(218 25% 4% / 0.3), 0px 1px 2px -1px hsl(218 25% 4% / 0.3);
+  --shadow:     0px 4px 6px 0px hsl(218 25% 4% / 0.32), 0px 2px 4px -1px hsl(218 25% 4% / 0.28);
+  --shadow-md:  0px 6px 12px 0px hsl(218 25% 4% / 0.35), 0px 3px 6px -2px hsl(218 25% 4% / 0.3);
+  --shadow-lg:  0px 12px 24px 0px hsl(218 25% 4% / 0.4), 0px 6px 10px -3px hsl(218 25% 4% / 0.35);
+  --shadow-xl:  0px 20px 40px 0px hsl(218 25% 4% / 0.45), 0px 10px 16px -4px hsl(218 25% 4% / 0.38);
+  --shadow-2xl: 0px 32px 64px 0px hsl(218 25% 4% / 0.5);
+
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ==========================================
+   TRIFT CUSTOM STYLES
+   ========================================== */
+
+.font-display {
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.text-amber-brand {
+  color: hsl(var(--brand-amber));
+}
+
+.bg-anthracite {
+  background-color: hsl(var(--brand-anthracite));
+}
+
+.bg-anthracite-mid {
+  background-color: hsl(var(--brand-anthracite-mid));
+}
+
+/* Noise texture overlay */
+.noise-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  opacity: 0.4;
+}
+
+/* Amber underline decoration */
+.amber-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.amber-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: hsl(var(--brand-amber));
+  border-radius: 2px;
+}
+
+/* Section number label */
+.section-number {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: hsl(var(--brand-amber));
+}
+
+/* Service card hover lift */
+.service-card {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* CTA button with amber gleam */
+.btn-amber {
+  background-color: hsl(var(--brand-amber));
+  color: hsl(var(--brand-anthracite));
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-amber::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.25) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-amber:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-amber:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px hsl(var(--brand-amber) / 0.4);
+}
+
+.btn-amber:active {
+  transform: translateY(0px);
+}
+
+/* Dark button variant */
+.btn-dark {
+  background-color: hsl(var(--brand-anthracite));
+  color: hsl(44 20% 96%);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-dark:hover {
+  background-color: hsl(var(--brand-anthracite-mid));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Image overlay gradient */
+.img-gradient-overlay {
+  background: linear-gradient(
+    to right,
+    hsl(var(--brand-anthracite) / 0.88) 0%,
+    hsl(var(--brand-anthracite) / 0.55) 50%,
+    hsl(var(--brand-anthracite) / 0.15) 100%
+  );
+}
+
+/* Stat number style */
+.stat-number {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  color: hsl(var(--brand-amber));
+  line-height: 1;
+}
+
+/* Amber divider */
+.amber-divider {
+  width: 48px;
+  height: 3px;
+  background: hsl(var(--brand-amber));
+  border-radius: 2px;
+}
+
+/* Input focus styles */
+.trift-input {
+  background-color: hsl(44 22% 99%);
+  border: 1.5px solid hsl(var(--border));
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  outline: none;
+  color: hsl(var(--foreground));
+}
+
+.trift-input:focus {
+  border-color: hsl(var(--brand-amber));
+  box-shadow: 0 0 0 3px hsl(var(--brand-amber) / 0.18);
+}
+
+.trift-input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Navbar scroll state */
+.navbar-scrolled {
+  background-color: hsl(var(--brand-anthracite) / 0.97);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px hsl(218 25% 4% / 0.25);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  background-color: hsl(var(--brand-anthracite));
+}
+
+@layer utilities {
+  input[type='search']::-webkit-search-cancel-button {
+    @apply hidden;
+  }
+
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+  }
+
+  .no-default-hover-elevate {}
+  .no-default-active-elevate {}
+
+  .toggle-elevate::before,
+  .toggle-elevate-2::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  .toggle-elevate.toggle-elevated::before {
+    background-color: var(--elevate-2);
+  }
+
+  .border.toggle-elevate::before {
+    inset: -1px;
+  }
+
+  .hover-elevate:not(.no-default-hover-elevate),
+  .active-elevate:not(.no-default-active-elevate),
+  .hover-elevate-2:not(.no-default-hover-elevate),
+  .active-elevate-2:not(.no-default-active-elevate) {
+    position: relative;
+    z-index: 0;
+  }
+
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:not(.no-default-active-elevate)::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    border-radius: inherit;
+    z-index: 999;
+  }
+
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-1);
+  }
+
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-2);
+  }
+
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
+    inset: -1px;
+  }
+}
